@@ -1,3 +1,5 @@
+let answer = ""
+
 function getComputerChoice(min, max) {
     return Math.floor(Math.random() * (3 - 1 +1) + min);
 }
@@ -30,7 +32,33 @@ function playGame() {
     return answer = "It's a tie!"
   }
 
-  console.log(answer);
+  
     
 }
 
+
+
+function game() {
+    var score = 0;
+    var compScore = 0;
+    for (let i = 0; i < 5; i++) {
+        playGame();
+        if (answer == "You win!") {
+          score = score + 1;
+        } else if (answer == "It's a tie!") {
+            score = score + 0;
+        }
+        
+        else {
+            compScore = compScore + 1;
+        }
+        console.log(`This is your current score: ${score}`);
+        console.log(answer);
+    }
+    
+    if (score > compScore) {
+        console.log("Congratulations! You win the match!")
+    } else {
+        console.log("You lose! Better luck next time!")
+    }
+}
