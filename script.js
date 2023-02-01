@@ -4,17 +4,35 @@ function getComputerChoice(min, max) {
     return Math.floor(Math.random() * (3 - 1 +1) + min);
 }
 
-function lowerCase(str) {
-    return str.toLowerCase();
-}
 
-function titleCase(str) {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-}
+rock.addEventListener('click', () => {
+  playerSelection = "Rock";
+});
+
+paper.addEventListener('click', () => {
+  playerSelection = "Paper";
+});
+
+scissors.addEventListener('click', () => {
+  playerSelection = "Scissors";
+});
+
+let playerSelection = "";
+
+const buttons = document.querySelectorAll('button');
+
+ buttons.forEach((button) => {
+  button.addEventListener('click', game)})
 
 function playGame() {
   const computerSelection = getComputerChoice(1, 3);
-  let playerSelection = titleCase(lowerCase(prompt()));
+  
+
+const rock = document.getElementById('rock');
+const paper = document.getElementById('paper');
+const scissors = document.getElementById('scissors');
+
+
 
   if (playerSelection == "Rock" && computerSelection == 3) {
     return  answer = "You win!";
@@ -36,12 +54,27 @@ function playGame() {
     
 }
 
+let score = 0;
+let compScore = 0;
 
+function checkScore () {
+  if (score == 5) {
+  console.log("Congratulations on winning the match!");
+  score = 0;
+  compScore = 0;
+};
+
+  if (compScore == 5) {
+  console.log("You lose! better luck next time!")
+  score = 0;
+  compScore = 0;
+};
+}
 
 function game() {
-    var score = 0;
-    var compScore = 0;
-    for (let i = 0; i < 5; i++) {
+    
+
+   
         playGame();
         if (answer == "You win!") {
           score = score + 1;
@@ -52,13 +85,14 @@ function game() {
         else {
             compScore = compScore + 1;
         }
-        console.log(`This is your current score: ${score}`);
+        console.log(`This is your current score: ${score}
+                    \nThis is the computer's score: ${compScore}`);
         console.log(answer);
-    }
+        checkScore();
     
-    if (score > compScore) {
-        console.log("Congratulations! You win the match!")
-    } else {
-        console.log("You lose! Better luck next time!")
-    }
 }
+
+
+
+ 
+
