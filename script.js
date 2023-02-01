@@ -1,4 +1,11 @@
 let answer = ""
+let score = 0;
+let compScore = 0;
+const results = document.querySelector('.results');
+
+const choice = document.querySelector('.choices')
+
+
 
 function getComputerChoice(min, max) {
     return Math.floor(Math.random() * (3 - 1 +1) + min);
@@ -54,8 +61,7 @@ const scissors = document.getElementById('scissors');
     
 }
 
-let score = 0;
-let compScore = 0;
+
 
 function checkScore () {
   if (score == 5) {
@@ -78,12 +84,16 @@ function game() {
         playGame();
         if (answer == "You win!") {
           score = score + 1;
+          document.querySelector('.playerscore').textContent = `Your score: ${score}`
         } else if (answer == "It's a tie!") {
             score = score + 0;
+            document.querySelector('.playerscore').textContent = `Your score: ${score}`;
+            document.querySelector('.computerscore').textContent = `Computer score: ${compScore}`;
         }
         
         else {
             compScore = compScore + 1;
+            document.querySelector('.computerscore').textContent = `Computer score: ${compScore}`;
         }
         console.log(`This is your current score: ${score}
                     \nThis is the computer's score: ${compScore}`);
@@ -92,7 +102,16 @@ function game() {
     
 }
 
+const pscore = document.createElement('div');
+pscore.classList.add('playerscore');
+pscore.textContent = `Your score: ${score}`;
+//document.querySelector('.playerscore').innerText = pscore.textContent;
+results.appendChild(pscore);
 
+const cscore = document.createElement('div');
+cscore.classList.add('computerscore');
+cscore.textContent = `Computer score: ${compScore}`;
+results.appendChild(cscore);
 
  
 
