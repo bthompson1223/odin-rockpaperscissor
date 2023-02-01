@@ -34,26 +34,37 @@ const buttons = document.querySelectorAll('button');
 function playGame() {
   const computerSelection = getComputerChoice(1, 3);
   
+  let compWord = ""
 
-const rock = document.getElementById('rock');
-const paper = document.getElementById('paper');
-const scissors = document.getElementById('scissors');
-
+  if (computerSelection == 1) {
+    compWord = "Rock";
+  } else if (computerSelection == 2) {
+    compWord = "Paper";
+  } else {
+    compWord = "Scissors"
+  }
 
 
   if (playerSelection == "Rock" && computerSelection == 3) {
+    document.querySelector('.choices').textContent = `${playerSelection} vs. ${compWord}! You win!`;
     return  answer = "You win!";
   } else if (playerSelection == "Rock" && computerSelection == 2) {
+    document.querySelector('.choices').textContent = `${playerSelection} vs. ${compWord}! You lose! Paper beats Rock!`;
     return answer = "You lose! Paper beats rock!";
   } else if (playerSelection == "Paper" && computerSelection == 1) {
+    document.querySelector('.choices').textContent = `${playerSelection} vs. ${compWord}! You win!`;
     return answer = "You win!";
   } else if (playerSelection == "Paper" && computerSelection == 3) {
+    document.querySelector('.choices').textContent = `${playerSelection} vs. ${compWord}! You lose! Scissors beats Paper!`;
     return answer = "You lose! Scissors beats paper!";
   } else if (playerSelection == "Scissors" && computerSelection == 2) {
+    document.querySelector('.choices').textContent = `${playerSelection} vs. ${compWord}! You win!`;
     return answer = "You win!";
   } else if (playerSelection == "Scissors" && computerSelection == 1) {
+    document.querySelector('.choices').textContent = `${playerSelection} vs. ${compWord}! You lose! Rock beats Scissors!`;
     return answer = "You lose! Rock beats scissors!";
   } else {
+    document.querySelector('.choices').textContent = `${playerSelection} vs. ${compWord}! It's a tie!`;
     return answer = "It's a tie!"
   }
 
@@ -66,12 +77,14 @@ const scissors = document.getElementById('scissors');
 function checkScore () {
   if (score == 5) {
   console.log("Congratulations on winning the match!");
+  finalResult.textContent = "Congratulations on winning the match!";
   score = 0;
   compScore = 0;
 };
 
   if (compScore == 5) {
   console.log("You lose! better luck next time!")
+  finalResult.textContent = "You lose! Better luck next time!";
   score = 0;
   compScore = 0;
 };
@@ -95,8 +108,6 @@ function game() {
             compScore = compScore + 1;
             document.querySelector('.computerscore').textContent = `Computer score: ${compScore}`;
         }
-        console.log(`This is your current score: ${score}
-                    \nThis is the computer's score: ${compScore}`);
         console.log(answer);
         checkScore();
     
@@ -112,6 +123,10 @@ const cscore = document.createElement('div');
 cscore.classList.add('computerscore');
 cscore.textContent = `Computer score: ${compScore}`;
 results.appendChild(cscore);
+
+const finalResult = document.createElement('div');
+finalResult.classList.add('final-score');
+results.appendChild(finalResult);
 
  
 
